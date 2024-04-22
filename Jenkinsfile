@@ -11,9 +11,10 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // Build your PHP project
-               dir('C:\\composer') {
+                // Change directory to C:\composer and execute Composer install command
+                dir('C:\\composer') {
                     bat 'call "C:\\xampp\\php\\php.exe" composer install'
+                }
             }
         }
         stage('Dockerize') {
