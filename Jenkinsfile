@@ -9,13 +9,11 @@ pipeline {
                 git url: 'https://github.com/ProjectsCC/VOTING_SYSTEM.git', branch: 'main'
             }
         }
-        stage('Build') {
-            steps {
-                
-                bat 'call "C:\xampp\php\php.exe" "C:\Users\simra\composer\composer.phar" install
-'
-            }
-        }
+      stage('Build') {
+    steps {
+        bat 'call "C:\\xampp\\php\\php.exe" "C:\\Users\\simra\\composer\\composer.phar" install'
+    }
+}
         stage('Dockerize') {
             steps {
                 // Build Docker image
