@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your PHP project
-                dir(C:\composer)
+                dir('C:\composer')
                 bat 'call "C:\\xampp\\php\\php.exe" composer install'
             }
         }
