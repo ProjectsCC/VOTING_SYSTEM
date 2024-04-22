@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout source code from Git
-                git 'https://github.com/ProjectsCC/VOTING_SYSTEM.git'
+                git url: 'https://github.com/ProjectsCC/VOTING_SYSTEM.git', branch: 'main'
             }
         }
         stage('Build') {
