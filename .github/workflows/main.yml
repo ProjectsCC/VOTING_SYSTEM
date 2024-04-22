@@ -11,15 +11,27 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      
-    - name: Install PHP Dependencies
-      run: composer install
-      
-    - name: Build Frontend
-      run: |
-        # Add build commands here
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0' # Specify the PHP version you need
+
+      - name: Install Composer
+        run: |
+          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+          php composer-setup.php
+          php -r "unlink('composer-setup.php');"
+          mv composer.phar /usr/local/bin/composer
+
+      - name: Install PHP Dependencies
+        run: composer install
+
+      - name: Build Frontend
+        run: |
+          # Add build commands here
         
   deploy:
     name: Deploy
@@ -28,6 +40,6 @@ jobs:
     needs: build
     
     steps:
-    - name: Deploy to Hosting Environment
-      run: |
-        # Add deployment commands here
+      - name: Deploy to Hosting Environment
+        run: |
+          # Add deployment commands here
