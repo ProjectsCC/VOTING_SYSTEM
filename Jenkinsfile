@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Run Docker container from the built image
-                     docker.image('php:8.0').run('-p 8082:8080')
+                     docker.image('php:8.0').run('-p 8081:8080')
                 }
             }
         }
