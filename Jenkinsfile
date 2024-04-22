@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deploy Docker image
-                bat 'docker run -d -p 8085:80 php:8.0'
+                bat 'docker run -d -p 8087:80 php:8.0'
             }
         }
     }
