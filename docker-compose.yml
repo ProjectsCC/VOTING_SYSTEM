@@ -5,7 +5,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - ./C:/xampp/htdocs/Online-voting-system-project-in-php-master:/var/www/html
+            - ./C:/xampp/htdocs/Online-voting-system-project-in-php-master
         links:
             - db
         networks:
