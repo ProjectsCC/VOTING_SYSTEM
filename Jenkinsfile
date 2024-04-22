@@ -2,22 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Build Docker Image') {
+        stage('Checkout') {
             steps {
-                script {
-                    // Build Docker image using Dockerfile
-                    //docker.build('my-image:latest', '-f Dockerfile .')
-                    docker.build('php:8.0', '-f Dockerfile .')
-                }
+                // Checkout source code from Git
+                git 'https://github.com/ProjectsCC/VOTING_SYSTEM.git'
             }
         }
-        
-        stage('Run Docker Container') {
+        stage('Build') {
             steps {
-                script {
-                    // Run Docker container from the built image
-                     docker.image('php:8.0').run('-p 8081:8080')
-                }
+                // Build your PHP project
+                sh 'composer install'
+            }
+        }
+        stage('Dockerize') {
+            steps {
+                // Build Docker image
+                sh 'docker build -t php:8.0 .'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Deploy Docker image
+                sh 'docker run -d -p 8080:80 php:8.0'
             }
         }
     }
