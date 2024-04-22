@@ -1,0 +1,10 @@
+{
+    "name": "Online-voting-system-project-in-php-master",
+    "description": "Your project description",
+    "type": "project",
+    "require": {
+        "php": "8.0.30",
+        "vendor/package1": "^1.0",
+        "vendor/package2": "~2.0"
+    }
+}
